@@ -10,6 +10,7 @@
 		1DEC45D9253A10760056E13A /* ConnectionLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC45CF253A10760056E13A /* ConnectionLayer.framework */; };
 		1DEC45DE253A10760056E13A /* ConnectionLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC45DD253A10760056E13A /* ConnectionLayerTests.swift */; };
 		1DEC45E0253A10760056E13A /* ConnectionLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DEC45D2253A10760056E13A /* ConnectionLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DEC45EC253A10980056E13A /* ConnectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC45EB253A10980056E13A /* ConnectionLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		1DEC45D8253A10760056E13A /* ConnectionLayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectionLayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DEC45DD253A10760056E13A /* ConnectionLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionLayerTests.swift; sourceTree = "<group>"; };
 		1DEC45DF253A10760056E13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DEC45EB253A10980056E13A /* ConnectionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				1DEC45D2253A10760056E13A /* ConnectionLayer.h */,
+				1DEC45EB253A10980056E13A /* ConnectionLayer.swift */,
 				1DEC45D3253A10760056E13A /* Info.plist */,
 			);
 			path = ConnectionLayer;
@@ -147,6 +150,7 @@
 				TargetAttributes = {
 					1DEC45CE253A10760056E13A = {
 						CreatedOnToolsVersion = 12.0.1;
+						LastSwiftMigration = 1200;
 					};
 					1DEC45D7253A10760056E13A = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -194,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DEC45EC253A10980056E13A /* ConnectionLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +346,7 @@
 		1DEC45E4253A10760056E13A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MC2W678MVZ;
@@ -357,6 +363,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nut.ConnectionLayer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,6 +372,7 @@
 		1DEC45E5253A10760056E13A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MC2W678MVZ;
@@ -389,6 +397,7 @@
 		1DEC45E7253A10760056E13A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MC2W678MVZ;
 				INFOPLIST_FILE = ConnectionLayerTests/Info.plist;
@@ -407,6 +416,7 @@
 		1DEC45E8253A10760056E13A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MC2W678MVZ;
 				INFOPLIST_FILE = ConnectionLayerTests/Info.plist;
