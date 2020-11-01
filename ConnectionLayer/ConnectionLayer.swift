@@ -36,7 +36,7 @@ public class ConnectionLayer {
         }
     }
     
-    public func conneccionRequest(url: String, method: String, headers: [String: String], parameters: [String: Any]?, closure: @escaping (Data?,String?) -> Void) {
+    public func conneccionRequest(url: String, method: HTTPMethod, headers: [String: String], parameters: [String: Any]?, closure: @escaping (Data?,String?) -> Void) {
         guard  let request = buildRequest(url: url, method: method, headers: headers, parameters: parameters) else {
             return
         }
@@ -71,12 +71,12 @@ public class ConnectionLayer {
         }.resume()
     }
     
-    private func buildRequest(url:  String, method: String, headers: [String: String], parameters: [String: Any]?) -> URLRequest? {
+    private func buildRequest(url:  String, method: HTTPMethod, headers: [String: String], parameters: [String: Any]?) -> URLRequest? {
         guard let url = URL(string: url) else {
             return nil
         }
         var request = URLRequest(url: url)
-        request.httpMethod = method
+        request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
         if let param = parameters {
             do{
