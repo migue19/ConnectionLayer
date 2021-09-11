@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D8C030825641BBF006C1A96 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8C030725641BBF006C1A96 /* Encodable.swift */; };
 		1DA5C28A254F453B00BE7AB8 /* ConnectionLayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA5C289254F453B00BE7AB8 /* ConnectionLayerEntity.swift */; };
 		1DEC45D9253A10760056E13A /* ConnectionLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DEC45CF253A10760056E13A /* ConnectionLayer.framework */; };
 		1DEC45DE253A10760056E13A /* ConnectionLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC45DD253A10760056E13A /* ConnectionLayerTests.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D8C030725641BBF006C1A96 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		1DA5C289254F453B00BE7AB8 /* ConnectionLayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionLayerEntity.swift; sourceTree = "<group>"; };
 		1DEC45CF253A10760056E13A /* ConnectionLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConnectionLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DEC45D2253A10760056E13A /* ConnectionLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionLayer.h; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			children = (
 				1DEC45D2253A10760056E13A /* ConnectionLayer.h */,
 				1DEC45EB253A10980056E13A /* ConnectionLayer.swift */,
+				1D8C030725641BBF006C1A96 /* Encodable.swift */,
 				1DA5C289254F453B00BE7AB8 /* ConnectionLayerEntity.swift */,
 				1DEC45D3253A10760056E13A /* Info.plist */,
 			);
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DA5C28A254F453B00BE7AB8 /* ConnectionLayerEntity.swift in Sources */,
+				1D8C030825641BBF006C1A96 /* Encodable.swift in Sources */,
 				1DEC45EC253A10980056E13A /* ConnectionLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

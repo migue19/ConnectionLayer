@@ -36,10 +36,24 @@ public class ConnectionLayer {
         }
     }
     
-    public func conneccionRequest(url: String, method: HTTPMethod, headers: [String: String], parameters: [String: Any]?, closure: @escaping (Data?,String?) -> Void) {
-        guard  let request = buildRequest(url: url, method: method, headers: headers, parameters: parameters) else {
+    public func connectionRequest(url: String, method: HTTPMethod, headers: [String: String], parameters: [String: Any]?, closure: @escaping (Data?,String?) -> Void) {
+        guard  let request = createRequest(url: url, method: method, headers: headers, parameters: parameters) else {
             return
         }
+        startRequest(request: request) { (data, error) in
+            closure(data, error)
+        }
+    }
+    public func connectionRequest(url: String, method: HTTPMethod, headers: [String: String], data: Data?, closure: @escaping (Data?,String?) -> Void) {
+        guard  let request = createRequest(url: url, method: method, headers: headers, parameters: data) else {
+            return
+        }
+        startRequest(request: request) { (data, error) in
+            closure(data, error)
+        }
+    }
+    
+    private func startRequest(request: URLRequest, closure: @escaping (Data?,String?) -> Void) {
         let configuration = getSessionConfiguration()
         let session = URLSession(configuration: configuration)
         session.dataTask(with: request) { (data, response, error) in
@@ -71,7 +85,18 @@ public class ConnectionLayer {
         }.resume()
     }
     
-    private func buildRequest(url:  String, method: HTTPMethod, headers: [String: String], parameters: [String: Any]?) -> URLRequest? {
+    private func createRequest(url:  String, method: HTTPMethod, headers: [String: String], parameters: Data?) -> URLRequest? {
+        guard let url = URL(string: url) else {
+            return nil
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        request.allHTTPHeaderFields = headers
+        request.httpBody = parameters
+        return request
+    }
+    
+    private func createRequest(url:  String, method: HTTPMethod, headers: [String: String], parameters: [String: Any]?) -> URLRequest? {
         guard let url = URL(string: url) else {
             return nil
         }
