@@ -9,12 +9,15 @@ import Foundation
 
 public class ConnectionLayer {
     let time: Int
+    let isDebug: Bool
     
     public init() {
         self.time = 180
+        self.isDebug = true
     }
-    public init(time: Int) {
+    public init(time: Int = 180, isDebug: Bool = true) {
         self.time = time
+        self.isDebug = isDebug
     }
     
     private func getSessionConfiguration() -> URLSessionConfiguration {
@@ -30,9 +33,9 @@ public class ConnectionLayer {
         }
         do {
             let jsonObject = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            print(jsonObject)
+            printEvent(event: jsonObject)
         } catch {
-            print(error)
+            printEvent(event: error)
         }
     }
     
@@ -68,21 +71,28 @@ public class ConnectionLayer {
             switch(httpResponse.statusCode){
             case 200:
                 closure(data,nil)
-                print("Servicio exitoso")
+                self.printEvent(event: "Servicio exitoso")
                 break
             case 404:
                 closure(nil,"Servicio no Encontrado")
-                print("Servicio no Encontrado")
+                self.printEvent(event: "Servicio no Encontrado")
                 break
             case 500:
                 closure(nil,"Error en el Servicio")
+                self.printEvent(event: "Error en el Servicio")
                 break
             default:
                 closure(nil,"el servicio regreso un codigo \(httpResponse.statusCode)")
-                print("el servicio regreso un codigo \(httpResponse.statusCode)")
+                self.printEvent(event: "el servicio regreso un codigo \(httpResponse.statusCode)")
                 break
             }
         }.resume()
+    }
+    
+    private func printEvent(event: Any) {
+        if isDebug {
+            print(event)
+        }
     }
     
     private func createRequest(url:  String, method: HTTPMethod, headers: [String: String], parameters: Data?) -> URLRequest? {
@@ -104,11 +114,11 @@ public class ConnectionLayer {
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
         if let param = parameters {
-            do{
+            do {
                 let httpBody = try JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
                 request.httpBody = httpBody
-            }catch {
-                print(error)
+            } catch {
+                printEvent(event: error)
             }
         }
         return request
