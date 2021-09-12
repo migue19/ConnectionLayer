@@ -11,15 +11,25 @@ import XCTest
 class ConnectionLayerTests: XCTestCase {
     private var connectionLayer: ConnectionLayer?
     private var expectation: XCTestExpectation!
+    private var url: String!
     override func setUp() {
         super.setUp()
-        self.connectionLayer = ConnectionLayer(isDebug: false)
+        self.connectionLayer = ConnectionLayer(isDebug: true)
+        self.url = "https://api.bitso.com/v3/available_books/"
     }
     
     func testConnectionGet() {
-        let url = "https://api.bitso.com/v3/available_books/"
         self.expectation = expectation(description: "TestGet")
-        self.connectionLayer?.connectionRequest(url: url, method: .get, headers: [:], data: nil, closure: { [weak self] data, error in
+        self.connectionLayer?.connectionRequest(url: url, method: .get, data: nil, closure: { [weak self] data, error in
+            XCTAssertNotNil(data, "El servicio no respondió de manera exitosa")
+            self?.expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testConnectionGetParams() {
+        self.expectation = expectation(description: "TestGetParams")
+        self.connectionLayer?.connectionRequest(url: url, method: .get, closure: { [weak self] data, _ in
             XCTAssertNotNil(data, "El servicio no respondió de manera exitosa")
             self?.expectation.fulfill()
         })
@@ -28,6 +38,7 @@ class ConnectionLayerTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
+        self.url = nil
         self.expectation = nil
         self.connectionLayer = nil
     }
