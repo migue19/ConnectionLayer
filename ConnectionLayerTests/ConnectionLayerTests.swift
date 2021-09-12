@@ -9,25 +9,26 @@ import XCTest
 @testable import ConnectionLayer
 
 class ConnectionLayerTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    private var connectionLayer: ConnectionLayer?
+    private var expectation: XCTestExpectation!
+    override func setUp() {
+        super.setUp()
+        self.connectionLayer = ConnectionLayer(isDebug: false)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testConnectionGet() {
+        let url = "https://api.bitso.com/v3/available_books/"
+        self.expectation = expectation(description: "TestGet")
+        self.connectionLayer?.connectionRequest(url: url, method: .get, headers: [:], data: nil, closure: { [weak self] data, error in
+            XCTAssertNotNil(data, "El servicio no respondió de manera exitosa")
+            self?.expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 10.0)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    override func tearDown() {
+        super.tearDown()
+        self.expectation = nil
+        self.connectionLayer = nil
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
