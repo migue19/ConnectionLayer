@@ -13,6 +13,7 @@
 		1DEC45DE253A10760056E13A /* ConnectionLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC45DD253A10760056E13A /* ConnectionLayerTests.swift */; };
 		1DEC45E0253A10760056E13A /* ConnectionLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DEC45D2253A10760056E13A /* ConnectionLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DEC45EC253A10980056E13A /* ConnectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC45EB253A10980056E13A /* ConnectionLayer.swift */; };
+		F2BC22EC26ED9589002FB592 /* ConnectionLayer.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F2BC22EB26ED9588002FB592 /* ConnectionLayer.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		1DEC45DD253A10760056E13A /* ConnectionLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionLayerTests.swift; sourceTree = "<group>"; };
 		1DEC45DF253A10760056E13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DEC45EB253A10980056E13A /* ConnectionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionLayer.swift; sourceTree = "<group>"; };
+		F2BC22EB26ED9588002FB592 /* ConnectionLayer.podspec */ = {isa = PBXFileReference; lastKnownFileType = file; path = ConnectionLayer.podspec; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		1DEC45D1253A10760056E13A /* ConnectionLayer */ = {
 			isa = PBXGroup;
 			children = (
+				F2BC22EB26ED9588002FB592 /* ConnectionLayer.podspec */,
 				1DEC45D2253A10760056E13A /* ConnectionLayer.h */,
 				1DEC45EB253A10980056E13A /* ConnectionLayer.swift */,
 				1D8C030725641BBF006C1A96 /* Encodable.swift */,
@@ -187,6 +190,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2BC22EC26ED9589002FB592 /* ConnectionLayer.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
