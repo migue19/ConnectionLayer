@@ -84,12 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				F2BC22EB26ED9588002FB592 /* ConnectionLayer.podspec */,
+				F2CFADC626F0140D00A1F474 /* Classes */,
 				1DEC45D2253A10760056E13A /* ConnectionLayer.h */,
-				1DEC45EB253A10980056E13A /* ConnectionLayer.swift */,
-				1D8C030725641BBF006C1A96 /* Encodable.swift */,
-				1DA5C289254F453B00BE7AB8 /* ConnectionLayerEntity.swift */,
 				1DEC45D3253A10760056E13A /* Info.plist */,
-				F2BE61EB26EF9D4E00267ECF /* HTTPHeaders.swift */,
 			);
 			path = ConnectionLayer;
 			sourceTree = "<group>";
@@ -102,6 +99,17 @@
 				1DEC45DF253A10760056E13A /* Info.plist */,
 			);
 			path = ConnectionLayerTests;
+			sourceTree = "<group>";
+		};
+		F2CFADC626F0140D00A1F474 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F2BE61EB26EF9D4E00267ECF /* HTTPHeaders.swift */,
+				1DA5C289254F453B00BE7AB8 /* ConnectionLayerEntity.swift */,
+				1D8C030725641BBF006C1A96 /* Encodable.swift */,
+				1DEC45EB253A10980056E13A /* ConnectionLayer.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +388,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nut.ConnectionLayer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -406,6 +415,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nut.ConnectionLayer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
