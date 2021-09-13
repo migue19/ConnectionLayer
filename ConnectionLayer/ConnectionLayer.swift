@@ -39,7 +39,7 @@ public class ConnectionLayer {
         }
     }
     
-    public func connectionRequest(url: String, method: HTTPMethod, headers: [String: String]? = nil, parameters: [String: Any]? = nil, closure: @escaping (Data?,String?) -> Void) {
+    public func connectionRequest(url: String, method: HTTPMethod, headers: HTTPHeaders? = nil, parameters: [String: Any]? = nil, closure: @escaping (Data?,String?) -> Void) {
         guard  let request = createRequest(url: url, method: method, headers: headers, parameters: parameters) else {
             return
         }
@@ -47,7 +47,7 @@ public class ConnectionLayer {
             closure(data, error)
         }
     }
-    public func connectionRequest(url: String, method: HTTPMethod, headers: [String: String]? = nil, data: Data?, closure: @escaping (Data?,String?) -> Void) {
+    public func connectionRequest(url: String, method: HTTPMethod, headers: HTTPHeaders? = nil, data: Data?, closure: @escaping (Data?,String?) -> Void) {
         guard  let request = createRequest(url: url, method: method, headers: headers, parameters: data) else {
             return
         }
@@ -95,24 +95,24 @@ public class ConnectionLayer {
         }
     }
     
-    private func createRequest(url:  String, method: HTTPMethod, headers: [String: String]?, parameters: Data?) -> URLRequest? {
+    private func createRequest(url:  String, method: HTTPMethod, headers: HTTPHeaders?, parameters: Data?) -> URLRequest? {
         guard let url = URL(string: url) else {
             return nil
         }
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
-        request.allHTTPHeaderFields = headers
+        request.allHTTPHeaderFields = headers?.dictionary
         request.httpBody = parameters
         return request
     }
     
-    private func createRequest(url:  String, method: HTTPMethod, headers: [String: String]?, parameters: [String: Any]?) -> URLRequest? {
+    private func createRequest(url:  String, method: HTTPMethod, headers: HTTPHeaders?, parameters: [String: Any]?) -> URLRequest? {
         guard let url = URL(string: url) else {
             return nil
         }
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
-        request.allHTTPHeaderFields = headers
+        request.allHTTPHeaderFields = headers?.dictionary
         if let param = parameters {
             do {
                 let httpBody = try JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)

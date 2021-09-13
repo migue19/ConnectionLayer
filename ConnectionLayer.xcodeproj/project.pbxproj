@@ -13,7 +13,9 @@
 		1DEC45DE253A10760056E13A /* ConnectionLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC45DD253A10760056E13A /* ConnectionLayerTests.swift */; };
 		1DEC45E0253A10760056E13A /* ConnectionLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DEC45D2253A10760056E13A /* ConnectionLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DEC45EC253A10980056E13A /* ConnectionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEC45EB253A10980056E13A /* ConnectionLayer.swift */; };
+		F23DE11526EE7DDA00CB51E0 /* ConnectionLayerPostTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23DE11426EE7DDA00CB51E0 /* ConnectionLayerPostTest.swift */; };
 		F2BC22EC26ED9589002FB592 /* ConnectionLayer.podspec in Resources */ = {isa = PBXBuildFile; fileRef = F2BC22EB26ED9588002FB592 /* ConnectionLayer.podspec */; };
+		F2BE61EC26EF9D4E00267ECF /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BE61EB26EF9D4E00267ECF /* HTTPHeaders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,9 @@
 		1DEC45DD253A10760056E13A /* ConnectionLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionLayerTests.swift; sourceTree = "<group>"; };
 		1DEC45DF253A10760056E13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DEC45EB253A10980056E13A /* ConnectionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionLayer.swift; sourceTree = "<group>"; };
-		F2BC22EB26ED9588002FB592 /* ConnectionLayer.podspec */ = {isa = PBXFileReference; lastKnownFileType = file; path = ConnectionLayer.podspec; sourceTree = SOURCE_ROOT; };
+		F23DE11426EE7DDA00CB51E0 /* ConnectionLayerPostTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionLayerPostTest.swift; sourceTree = "<group>"; };
+		F2BC22EB26ED9588002FB592 /* ConnectionLayer.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = ConnectionLayer.podspec; sourceTree = SOURCE_ROOT; };
+		F2BE61EB26EF9D4E00267ECF /* HTTPHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 				1D8C030725641BBF006C1A96 /* Encodable.swift */,
 				1DA5C289254F453B00BE7AB8 /* ConnectionLayerEntity.swift */,
 				1DEC45D3253A10760056E13A /* Info.plist */,
+				F2BE61EB26EF9D4E00267ECF /* HTTPHeaders.swift */,
 			);
 			path = ConnectionLayer;
 			sourceTree = "<group>";
@@ -92,6 +97,7 @@
 		1DEC45DC253A10760056E13A /* ConnectionLayerTests */ = {
 			isa = PBXGroup;
 			children = (
+				F23DE11426EE7DDA00CB51E0 /* ConnectionLayerPostTest.swift */,
 				1DEC45DD253A10760056E13A /* ConnectionLayerTests.swift */,
 				1DEC45DF253A10760056E13A /* Info.plist */,
 			);
@@ -208,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2BE61EC26EF9D4E00267ECF /* HTTPHeaders.swift in Sources */,
 				1DA5C28A254F453B00BE7AB8 /* ConnectionLayerEntity.swift in Sources */,
 				1D8C030825641BBF006C1A96 /* Encodable.swift in Sources */,
 				1DEC45EC253A10980056E13A /* ConnectionLayer.swift in Sources */,
@@ -219,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DEC45DE253A10760056E13A /* ConnectionLayerTests.swift in Sources */,
+				F23DE11526EE7DDA00CB51E0 /* ConnectionLayerPostTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
