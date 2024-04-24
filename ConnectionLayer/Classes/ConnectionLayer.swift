@@ -115,13 +115,25 @@ public class ConnectionLayer {
         request.allHTTPHeaderFields = headers?.dictionary
         if let param = parameters {
             do {
-                let httpBody = try JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
-                request.httpBody = httpBody
+                if method == .get {
+                    try self.encodeRequest(parameters: parameters, request: &request)
+                } else {
+                    let httpBody = try JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
+                    request.httpBody = httpBody
+                }
             } catch {
                 printEvent(event: error)
             }
         }
         return request
     }
-    
+    func encodeRequest(parameters: [String: Any]?, request: inout URLRequest) throws {
+        do {
+            if let parameters = parameters {
+                try URLEncoder.encodeParameters(urlRequest: &request, parameters: parameters)
+            }
+        } catch {
+            throw ConnectionLayerError.encodingFailed
+        }
+    }
 }
