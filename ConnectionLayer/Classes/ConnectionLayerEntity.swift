@@ -18,3 +18,11 @@ public enum HTTPMethod: String {
     case patch = "PATCH"
     case trace = "TRACE"
 }
+public enum ConnectionLayerError: String, Error {
+    /// La url esta vacía.
+    case missingURL
+    /// Fallo la codificación de parametros.
+    case encodingFailed
+    /// Encabezados vacios.
+    case headersNil
+}
