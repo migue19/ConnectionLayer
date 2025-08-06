@@ -39,50 +39,54 @@ public class ConnectionLayer {
         }
     }
     
-    public func connectionRequest(url: String, method: HTTPMethod, headers: HTTPHeaders? = nil, parameters: [String: Any]? = nil, closure: @escaping (Data?,String?) -> Void) {
+    public func connectionRequest(url: String, method: HTTPMethod, headers: HTTPHeaders? = nil, parameters: [String: Any]? = nil, closure: @escaping (Data?, Error?) -> Void) {
         guard  let request = createRequest(url: url, method: method, headers: headers, parameters: parameters) else {
             return
         }
-        startRequest(request: request) { (data, error) in
+        startRequest(request: request) { (data, error, statusCode) in
             closure(data, error)
         }
     }
-    public func connectionRequest(url: String, method: HTTPMethod, headers: HTTPHeaders? = nil, data: Data?, closure: @escaping (Data?,String?) -> Void) {
+    public func connectionRequest(url: String, method: HTTPMethod, headers: HTTPHeaders? = nil, data: Data?, closure: @escaping (Data?, Error?, Int?) -> Void) {
         guard  let request = createRequest(url: url, method: method, headers: headers, parameters: data) else {
             return
         }
-        startRequest(request: request) { (data, error) in
-            closure(data, error)
+        startRequest(request: request) { (data, error, statusCode) in
+            closure(data, error, statusCode)
         }
     }
     
-    private func startRequest(request: URLRequest, closure: @escaping (Data?,String?) -> Void) {
+    private func startRequest(request: URLRequest, closure: @escaping (Data?, Error?, Int?) -> Void) {
         let configuration = getSessionConfiguration()
         let session = URLSession(configuration: configuration)
         session.dataTask(with: request) { (data, response, error) in
-            if(error != nil){
-                closure(nil,"Error de conexion")
+            if let error = error {
+                closure(nil, error, nil)
                 return
             }
             guard let httpResponse = response as? HTTPURLResponse else{
                 return
             }
+            self.printEvent(event: "url: \(request.url?.absoluteString ?? "No URL")")
             self.printResultHttpConnection(data: data)
             switch(httpResponse.statusCode){
-            case 200:
-                closure(data,nil)
+            case 200, 201:
+                closure(data, nil, 200)
                 self.printEvent(event: "Servicio exitoso")
                 break
             case 404:
-                closure(nil,"Servicio no Encontrado")
+                let error = NSError(domain: "Servicio no encontrado", code: 404, userInfo: nil)
+                closure(data, error, 404)
                 self.printEvent(event: "Servicio no Encontrado")
                 break
             case 500:
-                closure(nil,"Error en el Servicio")
+                let error = NSError(domain: "Error en el Servicio", code: 500, userInfo: nil)
+                closure(data, error, 500)
                 self.printEvent(event: "Error en el Servicio")
                 break
             default:
-                closure(nil,"el servicio regreso un codigo \(httpResponse.statusCode)")
+                let error = NSError(domain: "el servicio regreso un codigo \(httpResponse.statusCode)", code: httpResponse.statusCode, userInfo: nil)
+                closure(data, error, httpResponse.statusCode)
                 self.printEvent(event: "el servicio regreso un codigo \(httpResponse.statusCode)")
                 break
             }
