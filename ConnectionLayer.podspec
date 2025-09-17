@@ -1,9 +1,9 @@
 Pod::Spec.new do |spec|
-  spec.platform     = :ios, "12.1"
-  spec.ios.deployment_target = '12.1'
+  spec.platform     = :ios, "13.0"
+  spec.ios.deployment_target = '13.0'
   spec.name         = "ConnectionLayer"
-  spec.version      = "1.0.1"
-  spec.summary      = "Una capa de conexion simple"
+  spec.version      = "1.0.2"
+  spec.summary      = "Una capa de conexión para hacer peticiones HTTP"
   spec.requires_arc = true
   spec.license = { :type => "MIT", :file => "LICENSE" }
   spec.description  = <<-DESC
